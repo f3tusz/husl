@@ -1,0 +1,300 @@
+@import "settings";
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900&display=swap');
+@import url('https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css');
+
+@import '../../node_modules/bulma/bulma';
+
+.navbar {
+    font-weight: 700;
+    font-size: 90%;
+    padding-top: 1.5rem;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    &-menu {
+        margin-left: 24vw;
+    }
+    &-item {
+        padding: 0.75rem 0.75rem;
+        transition: color 0.16s ease-out;
+        &:hover {
+            transition-timing-function: ease-in;
+        }
+        &.has-dropdown {
+            &:after {
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 8px solid white;
+                width: 0; 
+                height: 0;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                z-index: 21;
+            }
+            &:hover {
+                &:after {
+                    content: '';
+                }
+            }
+            
+            &.has-caption {
+                position: relative;
+                .navbar-dropdown{
+                    transform: translateX(-44%);
+                    left: 50%;
+                    width: 280px;
+                    &:before {
+                        background-color: black;
+                        position: absolute;
+                        width: 50%;
+                        height: 100%;
+                        content: '';
+                        display: block;
+                        top: 0;
+                        right: 0;
+                    }
+                    div {
+                        background-color: $red;
+                        content: '';
+                        display: block;
+                        display: flex;
+                        flex-direction: column;
+                        font-weight: 700;
+                        height: 100%;
+                        justify-content: space-between;
+                        opacity: 0;
+                        padding: 1rem 1rem .5rem;
+                        position: absolute;
+                        right: 0;
+                        text-transform: none;
+                        top: 0;
+                        transition: opacity 0.32s ease-out;
+                        width: 50%;
+                        span, i {
+                            color: $white;
+                        }
+                        .mdi {
+                            font-size: 24px;
+                            transition: all 0.32s ease-out;
+                        }
+                    }
+                    .navbar-item {
+                        position: static;
+                        &:hover {
+                            & + div {
+                                opacity: 1;
+                                .mdi {
+                                    transform: translateX(24px);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.has-columns {
+                .navbar-dropdown{
+                    left: auto;
+                    right: 0;
+                }
+            }
+        }
+        &.has-request-demo {
+            position: relative;
+            &:after,
+            .mdi {
+                transition: all 0.32s ease-out;
+            }
+            &:after {
+                background-color: $red;
+                content: '';
+                height: 2px;
+                top: 50%;
+                position: absolute;
+                transform: translateY(-1px);
+                width: 45%;
+                right: 100%;
+            }
+            span, .mdi {
+                color: $red;
+            }
+            span {
+                white-space: nowrap;
+            }
+            .mdi {
+                margin-left: 4%;
+                font-size: 20px;
+            }
+            &:hover {
+                &:after,
+                .mdi {
+                    transition: all 0.66s ease-in;
+                }
+                &:after {
+                    width: 100%;
+                }
+                .mdi {
+                    font-size: 32px;
+                    transform: translateX(-25%);
+                }
+            }
+        }
+    }
+    &-dropdown {
+        border-radius: 0;
+        border-top: 0;
+        box-shadow: 0 0 24px rgba(10, 10, 10, 0.1);
+        .navbar-item {
+            padding-right: initial;
+        }
+        span {
+            color: $grey-light;
+        }
+    }
+}
+
+.hero {
+    padding-top: $navbar-height;
+    padding-bottom: 6rem;
+    overflow: hidden;
+    position: relative;
+    // &-body {
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 0;
+    //     width: 100%;
+    //     transform: translateY(-50%);
+    // }
+    video {
+        position: absolute;
+        min-width: 100%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
+
+    }
+    .main-copy {
+        background-color: $white;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 9rem 5rem 4rem 6rem;
+        position: relative;
+        width: 56%;
+        &:after,
+        &:before {
+            background: white;
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 0;
+        }
+        &:before {
+            bottom: 0;
+            height: 50vw;
+            right: 50%;
+            width: 50vw;
+        }
+        &:after {
+            width: 50%;
+            top: 0;
+            height: 50vw;
+
+        }
+        .title, .subtitle {
+            position: relative;
+            z-index: 1;
+        }
+        .title {
+            letter-spacing: -.24rem;
+            line-height: .9;
+        }
+        .subtitle {
+            margin-left: 17%;
+            margin-right: 8%;
+            padding-top: 5%;
+            &:before{
+                background-color: #ce232e;
+                content: '';
+                height: 2px;
+                position: absolute;
+                right: 106%;
+                top: 2.9rem;
+                width: 16%;
+            }
+        }
+    }
+    &-overlay {
+        pointer-events: none;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        // &:before,
+        &:after {
+            border-top: $navbar-height*2 solid white;
+            content: '';
+            display: block;
+            position: absolute;
+            width: 32vw;
+            height: 35vh;
+        }
+        // &:before {
+        //     top: 0;
+        //     left: 0;
+        // }
+        &:after {
+            border-right: $navbar-height*2 solid white;
+            right: 0;
+            width: 60%;
+            height: 100%;
+        }
+    }
+    &-nav {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        a {
+            background-color: $dark;
+            color: $white;
+            display: flex;
+            height: 13rem;
+            width: 13rem;
+            padding: 1.5rem 6rem 1.5rem 1.5rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.16s ease-out;
+            span {
+                line-height: 1;
+            }
+            .mdi {
+                transition: all 0.32s ease-out;
+                color: inherit;
+            }
+            &:first-child {
+                transform: translateY(-100%);
+                background-color: $red;
+                color: $white;
+            }
+            &:last-child {
+                transform: translateX(-100%);
+                background-color: $white;
+                color: $dark;
+            }
+            &:hover {
+                transition: all 0.16s ease-in;
+                background-color: $dark;
+                color: $white;
+                .mdi {
+                    transform: translateX(66%);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+function playVid(){vid.play()}console.log("plugins");var vid=document.getElementById("videoBackground");
