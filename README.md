@@ -1,6 +1,4 @@
-# gulp-starter-kit
-
-HUSL Tech Test
+# HUSL Tech Test
 
 ## Prerequisites
 
